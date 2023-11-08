@@ -18,8 +18,11 @@ export async function generateStaticParams() {
     }))
 }
 
-async function getTicket(id) { //got this data by npm installing json-server
-    const res = await fetch('http://localhost:4000/tickets/' + id, {
+async function getTicket(id) { 
+    // imitate delay
+    await new Promise(resolve => setTimeout(resolve, 3000))
+
+    const res = await fetch('http://localhost:4000/tickets/' + id, { //got this data by npm installing json-server 
         next: {// this is set to the amount of time that NextJS should wait since last page visit before revalidating the cached data again.
             revalidate: 60 // if you set this to 0, the page is dynamically rendered and the generateStaticParams() is useless
         }

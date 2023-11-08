@@ -3,8 +3,11 @@
 import Link from "next/link"
 
 // fetch logic 
-async function getTickets() { //got this data by npm installing json-server
-    const res = await fetch('http://localhost:4000/tickets', {
+async function getTickets() { 
+    // imitate delay
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    
+    const res = await fetch('http://localhost:4000/tickets', { //got this data by npm installing json-server
         next: {// this is set to the amount of time that NextJS should wait since last page visit before revalidating the cached data again.
             revalidate: 0 // use 0 to opt out of using cache
         }
