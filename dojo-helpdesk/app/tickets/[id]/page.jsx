@@ -9,7 +9,7 @@ export const dynamicParams = true
 // and that way it can be statically rendered and served, as shown below.
 // This function gets alist of all ids and tickets at build time, so that NextJS can make a page and corresponding route for each one of them.
 export async function generateStaticParams() {
-    const res = await fetch('http://localhost:4000/tickets')
+    const res = await fetch('http://localhost:4000/tickets') // this is from the npm json-server thing 
 
     const tickets = await res.json()
 
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 
 async function getTicket(id) { 
     // imitate delay
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    // await new Promise(resolve => setTimeout(resolve, 3000))
 
     const res = await fetch('http://localhost:4000/tickets/' + id, { //got this data by npm installing json-server 
         next: {// this is set to the amount of time that NextJS should wait since last page visit before revalidating the cached data again.
